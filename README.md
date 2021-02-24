@@ -4,7 +4,7 @@ This mod allows you to remove intro and outro cutscenes from runs.
 **This is not [leaderboard](https://speedrun.com/hades) legal, and any runs found to be using this mod _will_ be rejected** 
 
 # Installation
-To install RemoveThanatos, go the the [Releases](https://github.com/Museus/RemoveCutscenes/releases) tab and download the latest .zip file. This will include the following files:
+To install RemoveCutscenes, go to the [Releases](https://github.com/Museus/RemoveCutscenes/releases) tab and download the latest .zip file. This will include the following files:
 
 -   Mods/
     - RemoveCutscenes/
