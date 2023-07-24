@@ -5,16 +5,17 @@
 
     Optionally removes intro and outro cutscenes to runs
 ]]
-ModUtil.RegisterMod("RemoveCutscenes")
+ModUtil.Mod.Register("RemoveCutscenes")
 
 local config = {
+    ModName = "RemoveCutscenes",
     RemoveIntro = true,
     RemoveOutro = true,
 }
 RemoveCutscenes.config = config
 
-    -- Remove starting cutscene
-ModUtil.WrapBaseFunction("ShowRunIntro", function( baseFunc )
+-- Remove starting cutscene
+ModUtil.Path.Wrap("ShowRunIntro", function( baseFunc )
     if config.RemoveIntro then
         return
     end
@@ -22,8 +23,7 @@ ModUtil.WrapBaseFunction("ShowRunIntro", function( baseFunc )
     baseFunc()
 end, RemoveCutscenes)
 
-
-ModUtil.WrapBaseFunction("EndEarlyAccessPresentation", function ( baseFunc )
+ModUtil.Path.Wrap("EndEarlyAccessPresentation", function ( baseFunc )
     if config.RemoveOutro then
         CurrentRun.ActiveBiomeTimer = false
 
@@ -37,17 +37,17 @@ ModUtil.WrapBaseFunction("EndEarlyAccessPresentation", function ( baseFunc )
     baseFunc()
 end, RemoveCutscenes)
 
-
 -- Scripts/RoomManager.lua : 1874
-ModUtil.WrapBaseFunction("StartRoom", function ( baseFunc, currentRun, currentRoom )
+ModUtil.Path.Wrap("StartRoom", function ( baseFunc, currentRun, currentRoom )
     PrintUtil.showModdedWarning()
 
     baseFunc(currentRun, currentRoom)
 end, RemoveCutscenes)
 
 -- Scripts/UIScripts.lua : 145
-ModUtil.WrapBaseFunction("ShowCombatUI", function ( baseFunc, flag )
+ModUtil.Path.Wrap("ShowCombatUI", function ( baseFunc, flag )
     PrintUtil.showModdedWarning()
 
     baseFunc(flag)
 end, RemoveCutscenes)
+
